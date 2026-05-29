@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kishan Kumar Singh — Security Engineer & Threat Hunter</title>
+<meta name="description" content="Security Engineer & Threat Hunter writing about threat hunting, detection engineering, and incident response.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="scanline"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="prompt">~/</span>kks<span class="cursor-blink">_</span>
+  </a>
+  <ul>
+    <li><a href="index.html" class="active">home</a></li>
+    <li><a href="blog.html">blog</a></li>
+    <li><a href="about.html">about</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<main>
+  <section class="hero">
+    <div class="hero-meta">
+      <span class="tag">Security Engineer</span>
+      <span class="tag tag-green">Open to work</span>
+    </div>
+
+    <h1 class="hero-title">
+      I hunt<br>
+      <span class="stroke">threats</span> others<br>
+      can't see.
+    </h1>
+
+    <p class="hero-bio">
+      I live at the intersection of attacker mindset and
+      detection engineering — chasing TTPs through endpoint telemetry, PCAP, and deception tech,
+      then turning what I find into detections that hold.
+      <br><br>
+      This is where I write about it.
+    </p>
+
+    <div class="hero-links">
+      <a href="blog.html" class="btn-primary">Read the blog →</a>
+      <a href="about.html" class="btn-ghost">About me</a>
+    </div>
+  </section>
+
+  <!-- WHAT I WRITE ABOUT -->
+  <section class="topics">
+    <p class="section-label">// topics</p>
+    <div class="topic-grid">
+      <div class="topic-card">
+        <span class="topic-icon">🔍</span>
+        <h3>Threat Hunting</h3>
+        <p>Hypothesis-driven hunts, MITRE ATT&CK–aligned methodologies, and real-world walkthrough of hunts I've run.</p>
+      </div>
+      <div class="topic-card">
+        <span class="topic-icon">⚙️</span>
+        <h3>Detection Engineering</h3>
+        <p>Writing SIEM use cases, KQL & SPL queries, tuning correlation rules, and reducing false positives that kill SOC morale.</p>
+      </div>
+      <div class="topic-card">
+        <span class="topic-icon">🚨</span>
+        <h3>Incident Response</h3>
+        <p>IR case studies, post-incident hunting, attacker dwell time analysis, and lessons learned from the trenches.</p>
+      </div>
+      <div class="topic-card">
+        <span class="topic-icon">🛠️</span>
+        <h3>Tool Reviews</h3>
+        <p>Honest takes on EDR, SIEM, deception tech, and BAS tools — what works, what doesn't, and why.</p>
+      </div>
+      <div class="topic-card">
+        <span class="topic-icon">🧭</span>
+        <h3>Career & Community</h3>
+        <p>Growing in security, building hunt programs from scratch, and navigating the industry as a practitioner.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST POSTS -->
+  <section class="latest">
+    <div class="latest-header">
+      <p class="section-label">// latest posts</p>
+      <a href="blog.html" class="view-all">view all →</a>
+    </div>
+    <div class="post-list" id="latest-posts">
+      <!-- Populated by posts.js -->
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">~/kks</span>
+    
+    <div class="footer-links">
+      <a href="mailto:work.kishan.in@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/singhkishan1/" target="_blank">LinkedIn</a>
+      <a href="https://medium.com/@sudoEngineer" target="_blank">Medium</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/posts.js"></script>
+<script>
+  const container = document.getElementById('latest-posts');
+  const latest = POSTS.slice(0, 3);
+  if (latest.length === 0) {
+    container.innerHTML = '<p class="empty-state">First post coming soon...</p>';
+  } else {
+    container.innerHTML = latest.map(p => postCard(p)).join('');
+  }
+</script>
+</body>
+</html>

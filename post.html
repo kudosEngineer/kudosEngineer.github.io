@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Post — Kishan Kumar Singh</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="scanline"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="prompt">~/</span>kks<span class="cursor-blink">_</span>
+  </a>
+  <ul>
+    <li><a href="index.html">home</a></li>
+    <li><a href="blog.html">blog</a></li>
+    <li><a href="about.html">about</a></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="post-nav">
+    <a href="blog.html" class="back-link">← back to blog</a>
+  </div>
+
+  <article class="post-article" id="post-content">
+    <!-- Populated by JS -->
+  </article>
+
+  <section class="post-footer">
+    <div class="post-author">
+      <div class="author-avatar">KK</div>
+      <div>
+        <p class="author-name">Kishan Kumar Singh</p>
+        <p class="author-role">Security Engineer · Threat Hunter · Detection Engineering</p>
+      </div>
+    </div>
+    <a href="blog.html" class="btn-ghost">More posts →</a>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">~/kks</span>
+    
+    <div class="footer-links">
+      <a href="mailto:work.kishan.in@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/singhkishan1/" target="_blank">LinkedIn</a>
+      <a href="https://medium.com/@sudoEngineer" target="_blank">Medium</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/posts.js"></script>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get('slug');
+  const post = POSTS.find(p => p.slug === slug);
+
+  if (!post) {
+    document.getElementById('post-content').innerHTML = '<p class="empty-state">Post not found.</p>';
+  } else {
+    document.getElementById('page-title').textContent = post.title + ' — Kishan Kumar Singh';
+
+    document.getElementById('post-content').innerHTML = `
+      <header class="post-header">
+        <div class="post-tags">${post.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+        <h1 class="post-title">${post.title}</h1>
+        <div class="post-meta">
+          <span class="post-date">${post.date}</span>
+          <span class="post-read">${post.readTime} min read</span>
+        </div>
+      </header>
+      <div class="post-body">${post.content}</div>
+    `;
+  }
+</script>
+</body>
+</html>
