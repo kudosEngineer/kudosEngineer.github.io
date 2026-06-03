@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Post — Kishan Kumar Singh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">KKS<span class="brand-dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="blog.html" class="nav-link active">Writing</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="mailto:work.kishan.in@gmail.com" class="nav-cta">Get in touch</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+  <div class="post-back"><a href="blog.html">← Back to writing</a></div>
+  <article id="post-content" class="post-article"></article>
+  <div class="post-author-bar">
+    <div class="author-avatar-lg">KK</div>
+    <div>
+      <div class="author-name-lg">Kishan Kumar Singh</div>
+      <div class="author-role-lg">Security Engineer · Threat Hunter · Detection Engineering</div>
+      <div class="author-socials">
+        <a href="https://www.linkedin.com/in/singhkishan1/" target="_blank">LinkedIn</a>
+        <a href="https://medium.com/@sudoEngineer" target="_blank">Medium</a>
+      </div>
+    </div>
+    <a href="blog.html" class="btn-secondary" style="margin-left:auto">More posts →</a>
+  </div>
+</main>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">KKS.</span>
+    <span class="footer-copy">Kishan Kumar Singh · Security Engineer</span>
+    <div class="footer-links">
+      <a href="mailto:work.kishan.in@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/singhkishan1/" target="_blank">LinkedIn</a>
+      <a href="https://medium.com/@sudoEngineer" target="_blank">Medium</a>
+    </div>
+  </div>
+</footer>
+<script src="assets/posts.js"></script>
+<script>
+window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40));
+const slug = new URLSearchParams(window.location.search).get('slug');
+const post = POSTS.find(p => p.slug === slug);
+const el = document.getElementById('post-content');
+if (!post) {
+  el.innerHTML = '<p class="empty">Post not found.</p>';
+} else {
+  document.getElementById('page-title').textContent = post.title + ' — Kishan Kumar Singh';
+  el.innerHTML = `
+    <header class="post-header">
+      <div class="post-tags-row">${post.tags.map(t=>`<span class="filter-tag">${t.replace(/-/g,' ')}</span>`).join('')}</div>
+      <h1 class="post-title">${post.title}</h1>
+      <div class="post-meta"><span>${post.date}</span><span>${post.readTime} min read</span></div>
+    </header>
+    <div class="post-body">${post.content}</div>`;
+}
+</script>
+</body>
+</html>
